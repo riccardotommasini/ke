@@ -1,0 +1,40 @@
+@prefix :      <http://example.org#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example: <http://example.org#> .
+
+example:Student  a           owl:Class ;
+        owl:equivalentClass  [ a                   owl:Class ;
+                               owl:intersectionOf  ( example:Person
+                                                     [ a                   owl:Restriction ;
+                                                       owl:onProperty      example:attends ;
+                                                       owl:someValuesFrom  example:Course
+                                                     ]
+                                                     [ a                   owl:Restriction ;
+                                                       owl:onProperty      example:isEnrolledIn ;
+                                                       owl:someValuesFrom  example:University
+                                                     ]
+                                                   )
+                             ] .
+
+example:  a     owl:Ontology .
+
+example:10324137  a           example:Person , owl:NamedIndividual ;
+        example:attends       example:ke ;
+        example:isEnrolledIn  example:polimi .
+
+example:isEnrolledIn  a  owl:ObjectProperty .
+
+example:Course  a  owl:Class .
+
+example:ke  a   example:Course , owl:NamedIndividual .
+
+example:University  a  owl:Class .
+
+example:attends  a  owl:ObjectProperty .
+
+example:Person  a  owl:Class .
+
+example:polimi  a  example:University , owl:NamedIndividual .

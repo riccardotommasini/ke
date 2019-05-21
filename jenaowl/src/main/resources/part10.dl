@@ -1,0 +1,1 @@
+Student ≡ Person ⊓ (∃ attends.Course) ⊓ (∃ isEnrolledIn.University)attends(example.org#10324137, ke)isEnrolledIn(example.org#10324137, polimi)Course(ke)Person(example.org#10324137)University(polimi)

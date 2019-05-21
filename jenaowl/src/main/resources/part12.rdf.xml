@@ -1,0 +1,19 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="http://example.org#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://xmlns.com/foaf/0.1/">
+  <rdfs:Class rdf:about="http://example.org#Subject"/>
+  <rdfs:Class rdf:about="http://example.org#Institution"/>
+  <owl:ObjectProperty rdf:about="http://example.org#isPartOf"/>
+  <owl:ObjectProperty rdf:about="http://example.org#teaches"/>
+  <j.1:Person rdf:about="http://example.org#JonDoe">
+    <j.0:isPartOf>
+      <j.0:Institution rdf:about="http://example.org#Oxford"/>
+    </j.0:isPartOf>
+    <j.0:teaches>
+      <j.0:Subject rdf:about="http://example.org#SoftwareEng"/>
+    </j.0:teaches>
+  </j.1:Person>
+</rdf:RDF>

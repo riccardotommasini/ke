@@ -1,0 +1,134 @@
+@prefix :      <http://example.org#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix j.1:   <http://xmlns.com/foaf/0.1/> .
+@prefix j.0:   <http://example.org#> .
+@prefix example: <http://example.org#> .
+
+example:University  a  owl:Class .
+
+example:isPartOf  a  owl:ObjectProperty .
+
+example:  a     owl:Ontology .
+
+example:10324137  a           owl:NamedIndividual , example:Person ;
+        example:attends       example:ke ;
+        example:isEnrolledIn  example:polimi .
+
+example:teaches  a  owl:ObjectProperty .
+
+example:polimi  a  owl:NamedIndividual , example:University .
+
+_:b0    rdf:first  _:b1 ;
+        rdf:rest   () .
+
+_:b1    a                   owl:Restriction ;
+        owl:onProperty      example:isEnrolledIn ;
+        owl:someValuesFrom  example:University .
+
+example:isEnrolledIn  a  owl:ObjectProperty .
+
+example:Person  a  owl:Class .
+
+example:ke  a   owl:NamedIndividual , example:Course .
+
+example:Student  a           owl:Class ;
+        owl:equivalentClass  _:b2 .
+
+example:Oxford  a  example:Institution .
+
+example:Course  a  owl:Class .
+
+example:attends  a  owl:ObjectProperty .
+
+_:b3    rdf:first  _:b4 ;
+        rdf:rest   _:b0 .
+
+_:b4    a                   owl:Restriction ;
+        owl:onProperty      example:attends ;
+        owl:someValuesFrom  example:Course .
+
+example:JonDoe  a         j.1:Person ;
+        example:isPartOf  example:Oxford ;
+        example:teaches   example:SoftwareEng .
+
+example:SoftwareEng  a  example:Subject .
+
+example:Subject  a  rdfs:Class .
+
+_:b2    a                   owl:Class ;
+        owl:intersectionOf  _:b5 .
+
+_:b5    rdf:first  example:Person ;
+        rdf:rest   _:b3 .
+
+example:Institution  a  rdfs:Class .
+
+example:g2 {
+    example:Subject  a  rdfs:Class .
+    
+    example:JonDoe  a         j.1:Person ;
+            example:isPartOf  example:Oxford ;
+            example:teaches   example:SoftwareEng .
+    
+    example:teaches  a  owl:ObjectProperty .
+    
+    example:Oxford  a  example:Institution .
+    
+    example:SoftwareEng
+            a       example:Subject .
+    
+    example:isPartOf  a  owl:ObjectProperty .
+    
+    example:Institution
+            a       rdfs:Class .
+}
+
+example:g1 {
+    _:b5    rdf:first  example:Person ;
+            rdf:rest   _:b3 .
+    
+    example:  a     owl:Ontology .
+    
+    _:b4    a                   owl:Restriction ;
+            owl:onProperty      example:attends ;
+            owl:someValuesFrom  example:Course .
+    
+    _:b3    rdf:first  _:b4 ;
+            rdf:rest   _:b0 .
+    
+    example:10324137  a           example:Person , owl:NamedIndividual ;
+            example:attends       example:ke ;
+            example:isEnrolledIn  example:polimi .
+    
+    _:b0    rdf:first  _:b1 ;
+            rdf:rest   () .
+    
+    _:b2    a                   owl:Class ;
+            owl:intersectionOf  _:b5 .
+    
+    example:isEnrolledIn
+            a       owl:ObjectProperty .
+    
+    example:Course  a  owl:Class .
+    
+    example:ke  a   example:Course , owl:NamedIndividual .
+    
+    example:attends  a  owl:ObjectProperty .
+    
+    example:University
+            a       owl:Class .
+    
+    _:b1    a                   owl:Restriction ;
+            owl:onProperty      example:isEnrolledIn ;
+            owl:someValuesFrom  example:University .
+    
+    example:Person  a  owl:Class .
+    
+    example:Student  a           owl:Class ;
+            owl:equivalentClass  _:b2 .
+    
+    example:polimi  a  example:University , owl:NamedIndividual .
+}
